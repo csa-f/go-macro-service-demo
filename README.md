@@ -1,2 +1,4 @@
 # go-macro-service-demo
-a go micro service demo
+
+一个微服务demo
+gin+gorm+grpc
