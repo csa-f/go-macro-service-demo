@@ -13,4 +13,6 @@ RUN export GOROOT=/usr/local/go1.23.1 && \
     cp start.sh /app && \
     chmod +x /app/start.sh
 
+EXPOSE 8080
+
 CMD ["/app/start.sh"]
