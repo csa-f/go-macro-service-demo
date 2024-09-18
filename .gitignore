@@ -27,4 +27,4 @@ go.work.sum
 .vscode
 .idea
 /log
-conf.ymls
+conf.yml
