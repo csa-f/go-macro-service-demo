@@ -15,7 +15,7 @@ func InitLog() {
 	log.SetOutput(os.Stdout)
 	log.SetReportCaller(true)
 	log.SetFormatter(new(LogFormat))
-	log.SetLevel(log.Level(logLevel))
+	log.SetLevel(log.Level(level))
 }
 
 type LogFormat struct {

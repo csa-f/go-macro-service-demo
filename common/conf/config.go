@@ -21,7 +21,7 @@ func GetConfig() *Config {
 }
 
 func LoadConfig(serverName string) {
-	config := Config{
+	config = &Config{
 		Viper: viper.New(),
 	}
 	workDir, _ := os.Getwd()
@@ -30,6 +30,9 @@ func LoadConfig(serverName string) {
 	config.Viper.AddConfigPath(workDir + "/conf")
 	err := config.Viper.ReadInConfig()
 	if err != nil {
+		log.Fatalln(err)
+	}
+	if err := config.Viper.Unmarshal(config); err != nil {
 		log.Fatalln(err)
 	}
 }
