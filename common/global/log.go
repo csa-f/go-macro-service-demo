@@ -46,8 +46,8 @@ func (f *LogFormat) Format(entry *log.Entry) ([]byte, error) {
 
 	funcs := strings.SplitN(entry.Caller.Function, ".", 2)
 	msg := fmt.Sprintf("\033[%sm[%s] [%s] [%s:%d] %s\033[0m \n",
-		strings.ToUpper(entry.Level.String()),
 		levelColor,
+		strings.ToUpper(entry.Level.String()),
 		entry.Time.Format("2006-01-02 15:04:05,000"),
 		funcs[0]+"/"+filepath.Base(entry.Caller.File),
 		entry.Caller.Line,
