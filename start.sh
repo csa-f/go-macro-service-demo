@@ -4,7 +4,7 @@ ROOT=$(cd `dirname $0`; pwd)
 cd $ROOT
 
 if [ "$BINARY" = "" ];then
-    BINARY="member-api"
+    BINARY="test-api"
 fi
 
 # while [ true ];do
