@@ -9,3 +9,7 @@ type Repository struct {
 	DB     *gorm.DB
 	Config *conf.Config
 }
+
+func NewRepository() *Repository {
+	return &Repository{}
+}
