@@ -1,0 +1,13 @@
+syntax = "proto3";
+option go_package = "middle/service";
+service Middle{
+  rpc Ping(PingReq) returns (PongRes) {}
+}
+
+message PingReq {
+  int32 code = 1;
+}
+
+message PongRes {
+  int32 code = 1;
+}
