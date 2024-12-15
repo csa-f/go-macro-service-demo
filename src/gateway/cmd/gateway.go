@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	BaseConf "github.com/csa-f/go-macro-service-demo/common/conf"
+	BaseConf "github.com/csa-f/go-macro-service-demo/common/config"
 	"github.com/gin-gonic/gin"
 )
 

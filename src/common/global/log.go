@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/csa-f/go-macro-service-demo/common/conf"
+	"github.com/csa-f/go-macro-service-demo/common/config"
 	log "github.com/sirupsen/logrus"
 )
 
 func InitLog() {
-	level := conf.GetConfig().Server.LogLevel
+	level := config.GetConfig().Server.LogLevel
 	log.SetOutput(os.Stdout)
 	log.SetReportCaller(true)
 	log.SetFormatter(new(LogFormat))

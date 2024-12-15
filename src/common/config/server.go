@@ -1,4 +1,4 @@
-package conf
+package config
 
 type Server struct {
 	Ip       string `json:"ip"`

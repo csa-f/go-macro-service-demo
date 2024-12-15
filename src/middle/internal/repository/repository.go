@@ -1,15 +1,21 @@
 package repository
 
 import (
-	"github.com/csa-f/go-macro-service-demo/common/conf"
+	"github.com/csa-f/go-macro-service-demo/middle/config"
 	"gorm.io/gorm"
 )
 
 type Repository struct {
 	DB     *gorm.DB
-	Config *conf.Config
+	Config *config.Config
 }
 
-func NewRepository() *Repository {
-	return &Repository{}
+func NewRepository(
+	db *gorm.DB,
+	c *config.Config,
+) *Repository {
+	return &Repository{
+		db,
+		c,
+	}
 }

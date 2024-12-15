@@ -1,4 +1,4 @@
-package conf
+package config
 
 import (
 	"os"
@@ -27,8 +27,9 @@ func LoadConfig(serverName string) {
 	workDir, _ := os.Getwd()
 	config.Viper.SetConfigName(serverName)
 	config.Viper.SetConfigType("yml")
-	config.Viper.AddConfigPath(workDir + "/conf")
+	config.Viper.AddConfigPath(workDir + "/config")
 	err := config.Viper.ReadInConfig()
+
 	if err != nil {
 		log.Fatalln(err)
 	}

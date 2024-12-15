@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+
 	middleService "github.com/csa-f/go-macro-service-demo/common/proto/middle/service"
 	"github.com/csa-f/go-macro-service-demo/middle/internal/repository"
 	log "github.com/sirupsen/logrus"
@@ -9,14 +10,16 @@ import (
 
 type MiddleServer struct {
 	middleService.UnimplementedMiddleServer
-	repo repository.Repository
+	repo *repository.Repository
 }
 
-func NewMiddleServer() *MiddleServer {
-	return &MiddleServer{}
+func NewMiddleServer(repo *repository.Repository) *MiddleServer {
+	return &MiddleServer{
+		repo: repo,
+	}
 }
 
-func (s *MiddleServer) Ping(_ context.Context, in *middleService.PingReq) (*middleService.PongRes, error) {
-	log.Println(in.Code)
+func (s *MiddleServer) Ping(_ context.Context, req *middleService.PingReq) (*middleService.PongRes, error) {
+	log.Println(req.Code)
 	return &middleService.PongRes{Code: 2}, nil
 }
