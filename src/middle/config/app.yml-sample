@@ -1,14 +1,24 @@
 server:
-  ip: "0.0.0.0"
+  ip: 0.0.0.0
   port: 10080
-  name: gateway
+  name: middle
 db:
-  host: ""
+  driver: mysql
+  host: 127.0.0.1
   port: 3306
-  dbName: "macro-middle"
-  user: ""
-  password: ""
-  threshould: 1000
+  dbName: macro-middle
+  user: root
+  pass: root
+  charset: utf8mb4
+  threshold: 10000
 redis:
-  host: ""
+  host: 127.0.0.1
   port: 6379
+log:
+  level: 4
+  color:
+    red: 38;2;255;0;0
+    yellow: 38;2;255;165;0
+    gray: 38;2;100;100;100
+    def: 38;2;100;150;200
+    green: 38;2;85;107;47

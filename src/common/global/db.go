@@ -26,7 +26,7 @@ func GetDB(dbConfig *config.DB) *gorm.DB {
 		dbConfig.Host,
 		dbConfig.Port,
 		dbConfig.DBName,
-		dbConfig.CharSet,
+		dbConfig.Charset,
 	)
 
 	var dialector gorm.Dialector
