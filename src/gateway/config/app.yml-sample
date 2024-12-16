@@ -1,0 +1,14 @@
+server:
+  ip: "0.0.0.0"
+  port: 80
+  name: gateway
+db:
+  host: ""
+  port: 3306
+  dbName: ""
+  user: ""
+  password: ""
+  threshould: 0
+redis:
+  host: ""
+  port: 6379

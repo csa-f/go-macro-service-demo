@@ -1,24 +1,37 @@
 package global
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"github.com/csa-f/go-macro-service-demo/common/config"
 	log "github.com/sirupsen/logrus"
 )
 
-func InitLog() {
-	level := config.GetConfig().Server.LogLevel
+func InitLog(logConfig *config.Log) {
+	level := logConfig.Level
 	log.SetOutput(os.Stdout)
 	log.SetReportCaller(true)
-	log.SetFormatter(new(LogFormat))
+	log.SetFormatter(&LogFormat{
+		red:    logConfig.Color.Red,
+		yellow: logConfig.Color.Yellow,
+		gray:   logConfig.Color.Def,
+		def:    logConfig.Color.Def,
+		green:  logConfig.Color.Green,
+	})
 	log.SetLevel(log.Level(level))
 }
 
 type LogFormat struct {
+	red    string
+	yellow string
+	gray   string
+	def    string
+	green  string
 }
 
 const (
@@ -32,11 +45,14 @@ const (
 func (f *LogFormat) Format(entry *log.Entry) ([]byte, error) {
 	var levelColor string
 	switch entry.Level {
-	case log.DebugLevel, log.TraceLevel:
+	case log.DebugLevel,
+		log.TraceLevel:
 		levelColor = green
 	case log.WarnLevel:
 		levelColor = yellow
-	case log.ErrorLevel, log.FatalLevel, log.PanicLevel:
+	case log.ErrorLevel,
+		log.FatalLevel,
+		log.PanicLevel:
 		levelColor = red
 	case log.InfoLevel:
 		levelColor = def
@@ -44,12 +60,16 @@ func (f *LogFormat) Format(entry *log.Entry) ([]byte, error) {
 		levelColor = def
 	}
 
+	buffer := bytes.Buffer{}
+	buffer.WriteString(time.DateTime)
+	buffer.WriteString(",000")
+
 	funcs := strings.SplitN(entry.Caller.Function, ".", 2)
 	msg := fmt.Sprintf(
 		"\033[%sm[%s] [%s] [%s:%d] %s\033[0m \n",
 		levelColor,
 		strings.ToUpper(entry.Level.String()),
-		entry.Time.Format("2006-01-02 15:04:05,000"),
+		entry.Time.Format(buffer.String()),
 		funcs[0]+"/"+filepath.Base(entry.Caller.File),
 		entry.Caller.Line,
 		entry.Message,

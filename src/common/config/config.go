@@ -7,33 +7,29 @@ import (
 	"github.com/spf13/viper"
 )
 
-var (
-	config *Config
-)
-
 type Config struct {
 	Viper  *viper.Viper
 	Server *Server
+	DB     *DB
+	Redis  *Redis
+	Log    *Log
 }
 
-func GetConfig() *Config {
-	return config
-}
-
-func LoadConfig(serverName string) {
-	config = &Config{
+func Get(fileName string) *Config {
+	c := &Config{
 		Viper: viper.New(),
 	}
 	workDir, _ := os.Getwd()
-	config.Viper.SetConfigName(serverName)
-	config.Viper.SetConfigType("yml")
-	config.Viper.AddConfigPath(workDir + "/config")
-	err := config.Viper.ReadInConfig()
+	c.Viper.SetConfigName(fileName)
+	c.Viper.SetConfigType("yml")
+	c.Viper.AddConfigPath(workDir + "/config")
+	err := c.Viper.ReadInConfig()
 
 	if err != nil {
 		log.Fatalln(err)
 	}
-	if err := config.Viper.Unmarshal(config); err != nil {
+	if err := c.Viper.Unmarshal(c); err != nil {
 		log.Fatalln(err)
 	}
+	return c
 }
