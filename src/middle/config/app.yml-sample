@@ -14,6 +14,14 @@ db:
 redis:
   host: 127.0.0.1
   port: 6379
+  user: root
+  pass: root
+  db: 0
+  dialTimeout: 1000
+  readTimeout: 1000
+  writeTimeout: 1000
+  poolSize: 4
+  poolTimeout: 1000
 log:
   level: 4
   color:

@@ -2,6 +2,7 @@ package server
 
 import (
 	"fmt"
+	"github.com/redis/go-redis/v9"
 	"net"
 
 	middleService "github.com/csa-f/go-macro-service-demo/common/proto/middle/service"
@@ -13,7 +14,7 @@ import (
 	"gorm.io/gorm"
 )
 
-func NewRpcServer(db *gorm.DB, appConf *config.Config) {
+func NewRpcServer(db *gorm.DB, redis *redis.Client, appConf *config.Config) {
 	serverConf := appConf.Server
 	listen, err := net.Listen("tcp", fmt.Sprintf("%s:%d", serverConf.Ip, serverConf.Port))
 	if err != nil {
@@ -22,7 +23,7 @@ func NewRpcServer(db *gorm.DB, appConf *config.Config) {
 
 	var opts []grpc.ServerOption
 	s := grpc.NewServer(opts...)
-	server := service.NewMiddleServer(repository.NewRepository(db, appConf))
+	server := service.NewMiddleServer(repository.NewRepository(db, redis, appConf))
 	middleService.RegisterMiddleServer(s, server)
 	log.Warnf("server listening at %v", listen.Addr())
 	if err := s.Serve(listen); err != nil {

@@ -12,16 +12,16 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func InitLog(logConfig *config.Log) {
-	level := logConfig.Level
+func InitLog(conf *config.Log) {
+	level := conf.Level
 	log.SetOutput(os.Stdout)
 	log.SetReportCaller(true)
 	log.SetFormatter(&LogFormat{
-		red:    logConfig.Color.Red,
-		yellow: logConfig.Color.Yellow,
-		gray:   logConfig.Color.Def,
-		def:    logConfig.Color.Def,
-		green:  logConfig.Color.Green,
+		red:    conf.Color.Red,
+		yellow: conf.Color.Yellow,
+		gray:   conf.Color.Def,
+		def:    conf.Color.Def,
+		green:  conf.Color.Green,
 	})
 	log.SetLevel(log.Level(level))
 }

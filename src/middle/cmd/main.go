@@ -9,6 +9,7 @@ import (
 func main() {
 	appConf := config.Get()
 	global.InitLog(appConf.Log)
-	db := global.GetDB(appConf.DB)
-	server.NewRpcServer(db, appConf)
+	db := global.InitDB(appConf.DB)
+	redis := global.InitRedis(appConf.Redis)
+	server.NewRpcServer(db, redis, appConf)
 }

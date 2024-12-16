@@ -14,23 +14,23 @@ import (
 	"gorm.io/gorm"
 )
 
-func GetDB(dbConfig *config.DB) *gorm.DB {
-	if dbConfig.Host == "" {
+func InitDB(conf *config.DB) *gorm.DB {
+	if conf.Host == "" {
 		return nil
 	}
 
 	dsn := fmt.Sprintf(
 		"%s:%s@tcp(%s:%d)/%s?charset=%s&parseTime=True&loc=Local",
-		dbConfig.User,
-		dbConfig.Pass,
-		dbConfig.Host,
-		dbConfig.Port,
-		dbConfig.DBName,
-		dbConfig.Charset,
+		conf.User,
+		conf.Pass,
+		conf.Host,
+		conf.Port,
+		conf.DBName,
+		conf.Charset,
 	)
 
 	var dialector gorm.Dialector
-	switch dbConfig.Driver {
+	switch conf.Driver {
 	case consts.DriverMysql:
 		dialector = mysql.Open(dsn)
 	case consts.DriverSqlite:
@@ -42,7 +42,7 @@ func GetDB(dbConfig *config.DB) *gorm.DB {
 	case consts.DriverClickhouse:
 		dialector = clickhouse.Open(dsn)
 	default:
-		log.Fatalf("db driver not support:%s", dbConfig.Driver)
+		log.Fatalf("db driver not support:%s", conf.Driver)
 	}
 
 	db, err := gorm.Open(dialector, &gorm.Config{})
