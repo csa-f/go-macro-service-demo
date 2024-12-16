@@ -5,10 +5,10 @@ server:
 db:
   host: ""
   port: 3306
-  dbName: ""
+  dbName: "macro-middle"
   user: ""
   password: ""
-  threshould: 0
+  threshould: 1000
 redis:
   host: ""
   port: 6379
