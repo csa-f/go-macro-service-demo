@@ -25,8 +25,13 @@ redis:
 log:
   level: 4
   color:
-    red: 38;2;255;0;0
-    yellow: 38;2;255;165;0
-    gray: 38;2;100;100;100
-    def: 38;2;100;150;200
-    green: 38;2;85;107;47
+log:
+  level: 4
+  color:
+    debug:
+    trace:
+    warn :
+    error:
+    fatal:
+    panic:
+    info : 

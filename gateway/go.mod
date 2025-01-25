@@ -1,9 +1,9 @@
 module github.com/csa-f/go-macro-service-demo/gateway
 
-go 1.23.1
+go 1.23.2
 
 require (
-	github.com/csa-f/go-macro-service-demo/common v0.0.0-20250124032407-f3684dc49dbd
+	github.com/csa-f/go-macro-service-demo/common v0.0.0-20250125032918-6d5415924c22
 	github.com/gin-gonic/gin v1.10.0
 )
 
@@ -29,6 +29,7 @@ require (
 	github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd // indirect
 	github.com/modern-go/reflect2 v1.0.2 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.3 // indirect
+	github.com/rogpeppe/go-internal v1.10.0 // indirect
 	github.com/sagikazarmark/locafero v0.6.0 // indirect
 	github.com/sagikazarmark/slog-shim v0.1.0 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
@@ -48,6 +49,7 @@ require (
 	golang.org/x/sys v0.28.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
 	google.golang.org/protobuf v1.36.3 // indirect
+	gopkg.in/check.v1 v1.0.0-20201130134442-10cb98267c6c // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )

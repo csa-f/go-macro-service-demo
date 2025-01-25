@@ -6,11 +6,8 @@ import (
 
 	"github.com/csa-f/go-macro-service-demo/common/config"
 	"github.com/csa-f/go-macro-service-demo/common/consts"
-	"gorm.io/driver/clickhouse"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
-	"gorm.io/driver/sqlite"
-	"gorm.io/driver/sqlserver"
 	"gorm.io/gorm"
 )
 
@@ -33,14 +30,8 @@ func InitDB(conf *config.DB) *gorm.DB {
 	switch conf.Driver {
 	case consts.DriverMysql:
 		dialector = mysql.Open(dsn)
-	case consts.DriverSqlite:
-		dialector = sqlite.Open(dsn)
 	case consts.DriverPostgres:
 		dialector = postgres.Open(dsn)
-	case consts.DriverSqlserver:
-		dialector = sqlserver.Open(dsn)
-	case consts.DriverClickhouse:
-		dialector = clickhouse.Open(dsn)
 	default:
 		log.Fatalf("db driver not support:%s", conf.Driver)
 	}
