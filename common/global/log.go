@@ -13,51 +13,35 @@ import (
 )
 
 func InitLog(conf *config.Log) {
-	level := conf.Level
 	log.SetOutput(os.Stdout)
 	log.SetReportCaller(true)
 	log.SetFormatter(&LogFormat{
-		red:    conf.Color.Red,
-		yellow: conf.Color.Yellow,
-		gray:   conf.Color.Def,
-		def:    conf.Color.Def,
-		green:  conf.Color.Green,
+		Color: &conf.Color,
 	})
-	log.SetLevel(log.Level(level))
+	log.SetLevel(conf.Level)
 }
 
 type LogFormat struct {
-	red    string
-	yellow string
-	gray   string
-	def    string
-	green  string
+	Color *config.LogColor
 }
-
-const (
-	red    = "38;2;255;0;0"
-	yellow = "38;2;255;165;0"
-	gray   = "38;2;100;100;100"
-	def    = "38;2;100;150;200"
-	green  = "38;2;85;107;47"
-)
 
 func (f *LogFormat) Format(entry *log.Entry) ([]byte, error) {
 	var levelColor string
 	switch entry.Level {
-	case log.DebugLevel,
-		log.TraceLevel:
-		levelColor = green
+	case log.DebugLevel:
+		levelColor = f.Color.Debug
+	case log.TraceLevel:
+		levelColor = f.Color.Trace
 	case log.WarnLevel:
-		levelColor = yellow
-	case log.ErrorLevel,
-		log.FatalLevel,
-		log.PanicLevel:
-		levelColor = red
+		levelColor = f.Color.Warn
+	case log.ErrorLevel:
+		levelColor = f.Color.Error
+	case log.FatalLevel:
+		levelColor = f.Color.Fatal
+	case log.PanicLevel:
+		levelColor = f.Color.Panic
 	case log.InfoLevel:
-		levelColor = def
-	default:
-		levelColor = def
+		levelColor = f.Color.Info
 	}
 
 	buffer := bytes.Buffer{}

@@ -15,15 +15,35 @@ type Config struct {
 	Log    *Log
 }
 
+const (
+	red    = "38;2;255;0;0"
+	yellow = "38;2;255;165;0"
+	gray   = "38;2;100;100;100"
+	def    = "38;2;100;150;200"
+	green  = "38;2;85;107;47"
+)
+
 func Get(fileName string) *Config {
+	v := viper.New()
 	c := &Config{
-		Viper: viper.New(),
+		Viper: v,
 	}
+
 	workDir, _ := os.Getwd()
-	c.Viper.SetConfigName(fileName)
-	c.Viper.SetConfigType("yml")
-	c.Viper.AddConfigPath(workDir + "/config")
-	err := c.Viper.ReadInConfig()
+	v.SetConfigName(fileName)
+	v.SetConfigType("yml")
+	v.AddConfigPath(workDir + "/config")
+
+	v.SetDefault("log.color.debug", green)
+	v.SetDefault("log.color.trace", green)
+	v.SetDefault("log.color.warn", yellow)
+	v.SetDefault("log.color.error", red)
+	v.SetDefault("log.color.fatal", red)
+	v.SetDefault("log.color.panic", red)
+	v.SetDefault("log.color.panic", red)
+	v.SetDefault("log.color.info", def)
+
+	err := viper.ReadInConfig()
 
 	if err != nil {
 		log.Fatalln(err)
