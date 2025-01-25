@@ -25,9 +25,6 @@ const (
 
 func Get(fileName string) *Config {
 	v := viper.New()
-	c := &Config{
-		Viper: v,
-	}
 
 	workDir, _ := os.Getwd()
 	v.SetConfigName(fileName)
@@ -43,7 +40,11 @@ func Get(fileName string) *Config {
 	v.SetDefault("log.color.panic", red)
 	v.SetDefault("log.color.info", def)
 
-	err := viper.ReadInConfig()
+	c := &Config{
+		Viper: v,
+	}
+
+	err := v.ReadInConfig()
 
 	if err != nil {
 		log.Fatalln(err)
