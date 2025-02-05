@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/csa-f/go-macro-service-demo/middle/config"
+	"github.com/csa-f/macro-service/middle/config"
 	"github.com/redis/go-redis/v9"
 	"gorm.io/gorm"
 )
