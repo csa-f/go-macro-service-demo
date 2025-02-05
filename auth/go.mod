@@ -1,3 +1,3 @@
-module github.com/csa-f/go-macro-service-demo/auth
+module github.com/csa-f/macro-service/auth
 
 go 1.23.2

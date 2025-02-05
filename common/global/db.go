@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/csa-f/go-macro-service-demo/common/config"
-	"github.com/csa-f/go-macro-service-demo/common/consts"
+	"github.com/csa-f/macro-service/common/config"
+	"github.com/csa-f/macro-service/common/consts"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"

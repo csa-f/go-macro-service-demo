@@ -1,4 +1,4 @@
-module github.com/csa-f/go-macro-service-demo/common
+module github.com/csa-f/macro-service/common
 
 go 1.23.2
 

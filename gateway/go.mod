@@ -1,9 +1,9 @@
-module github.com/csa-f/go-macro-service-demo/gateway
+module github.com/csa-f/macro-service/gateway
 
 go 1.23.2
 
 require (
-	github.com/csa-f/go-macro-service-demo/common v0.0.0-20250125032918-6d5415924c22
+	github.com/csa-f/macro-service/common v0.0.0-20250125032918-6d5415924c22
 	github.com/gin-gonic/gin v1.10.0
 )
 

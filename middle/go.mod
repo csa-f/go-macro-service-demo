@@ -1,9 +1,9 @@
-module github.com/csa-f/go-macro-service-demo/middle
+module github.com/csa-f/macro-service/middle
 
 go 1.23.2
 
 require (
-	github.com/csa-f/go-macro-service-demo/common v0.0.0-20250124032407-f3684dc49dbd
+	github.com/csa-f/macro-service/common v0.0.0-20250124032407-f3684dc49dbd
 	github.com/redis/go-redis/v9 v9.7.0
 	github.com/sirupsen/logrus v1.9.3
 	google.golang.org/grpc v1.70.0

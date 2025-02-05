@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/csa-f/go-macro-service-demo/common/config"
+	"github.com/csa-f/macro-service/common/config"
 	log "github.com/sirupsen/logrus"
 )
 

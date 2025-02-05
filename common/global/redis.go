@@ -3,9 +3,10 @@ package global
 import (
 	"context"
 	"fmt"
-	"github.com/csa-f/go-macro-service-demo/common/config"
-	"github.com/redis/go-redis/v9"
 	"time"
+
+	"github.com/csa-f/macro-service/common/config"
+	"github.com/redis/go-redis/v9"
 )
 
 func InitRedis(conf *config.Redis) *redis.Client {
