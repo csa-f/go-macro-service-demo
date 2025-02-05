@@ -6,10 +6,10 @@ import (
 
 	"github.com/redis/go-redis/v9"
 
-	middleService "github.com/csa-f/go-macro-service-demo/common/proto/middle/service"
-	"github.com/csa-f/go-macro-service-demo/middle/config"
-	"github.com/csa-f/go-macro-service-demo/middle/internal/repository"
-	"github.com/csa-f/go-macro-service-demo/middle/internal/service"
+	middleService "github.com/csa-f/macro-service/common/proto/middle/service"
+	"github.com/csa-f/macro-service/middle/config"
+	"github.com/csa-f/macro-service/middle/internal/repository"
+	"github.com/csa-f/macro-service/middle/internal/service"
 	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 	"gorm.io/gorm"

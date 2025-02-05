@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	CommonConfig "github.com/csa-f/go-macro-service-demo/common/config"
-	"github.com/csa-f/go-macro-service-demo/gateway/router"
+	CommonConfig "github.com/csa-f/macro-service/common/config"
+	"github.com/csa-f/macro-service/gateway/router"
 	"github.com/gin-gonic/gin"
 )
 

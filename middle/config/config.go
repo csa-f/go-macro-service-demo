@@ -1,6 +1,6 @@
 package config
 
-import commonConfig "github.com/csa-f/go-macro-service-demo/common/config"
+import commonConfig "github.com/csa-f/macro-service/common/config"
 
 type Config struct {
 	*commonConfig.Config
