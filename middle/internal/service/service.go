@@ -3,8 +3,8 @@ package service
 import (
 	"context"
 
-	middleService "github.com/csa-f/go-macro-service-demo/common/proto/middle/service"
-	"github.com/csa-f/go-macro-service-demo/middle/internal/repository"
+	middleService "github.com/csa-f/macro-service/common/proto/middle/service"
+	"github.com/csa-f/macro-service/middle/internal/repository"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/csa-f/go-macro-service-demo/common/global"
-	"github.com/csa-f/go-macro-service-demo/middle/cmd/server"
-	"github.com/csa-f/go-macro-service-demo/middle/config"
+	"github.com/csa-f/macro-service/common/global"
+	"github.com/csa-f/macro-service/middle/cmd/server"
+	"github.com/csa-f/macro-service/middle/config"
 )
 
 func main() {
